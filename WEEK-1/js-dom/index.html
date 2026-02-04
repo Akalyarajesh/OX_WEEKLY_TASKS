@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: white;
+        color: black;
+      }
+      button {
+        background-color: rgb(52, 153, 248);
+        color: white;
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      body.active {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg">
+    <h1 class="heading">DOM Manipulation</h1>
+    <button id="btn">Click me</button>
+    <p id="text"></p>
+
+    <h2>Toggle Dark Mode</h2>
+    <button id="toggle">Dark Mode</button>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const text = document.getElementById("text");
+      btn.addEventListener("click", () => {
+        btn.style.backgroundColor = "green";
+        text.textContent = "Hi";
+      });
+
+      const toggle = document.getElementById("toggle");
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("active");
+        toggle.textContent = document.body.classList.contains("active")
+          ? "Light Mode"
+          : "Dark Mode";
+      });
+
+      // const heading =document.getElementsByClassName('heading')[0];
+      // heading.addEventListener('click',()=>{
+      //     alert("Heading Clicked");
+      // })
+
+      const heading1 = document.querySelector(".heading");
+      heading1.addEventListener("click", () => {
+        alert("Heading Clicked");
+      });
+    </script>
+  </body>
+</html>
