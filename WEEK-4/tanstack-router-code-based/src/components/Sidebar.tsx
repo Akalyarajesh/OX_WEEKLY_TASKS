@@ -31,6 +31,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
+import { SiGoogleforms } from "react-icons/si";
+import { MdOutlinePeople } from "react-icons/md";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -40,7 +42,7 @@ const Sidebar = () => {
       {/*BURGER BUTTON (MOBILE)  */}
       <button
         onClick={() => setOpen(true)}
-        className="sm:hidden fixed top-4 left-4 z-50 text-white bg-gray-900 p-2 rounded-md shadow"
+        className="sm:hidden  mb-5 fixed top-4 left-4 z-50 text-white bg-linear-to-r from-indigo-600 to-blue-600 p-2 rounded-md shadow"
       >
         <FiMenu size={22} />
       </button>
@@ -81,21 +83,23 @@ const Sidebar = () => {
           <Link
             to="/"
             onClick={() => setOpen(false)}
-            className="px-6 py-3 rounded transition
-                     hover:bg-gray-700
-                     [&.active]:bg-gray-700"
+            className="flex items-center gap-3 px-6 py-3 rounded transition
+             hover:bg-gray-700
+             [&.active]:bg-linear-to-r from-indigo-600 to-blue-600"
           >
-            Add Employee
+            <SiGoogleforms className="text-xl text-white font-bold" />
+            <span className="text-sm font-medium">Add Employee</span>
           </Link>
 
           <Link
             to="/employees"
             onClick={() => setOpen(false)}
-            className="px-6 py-3 rounded transition
-                     hover:bg-gray-700
-                     [&.active]:bg-gray-700"
+            className="flex items-center gap-3 px-6 py-3 rounded transition
+             hover:bg-gray-700
+             [&.active]:bg-linear-to-r from-indigo-600 to-blue-600"
           >
-            Employee List
+            <MdOutlinePeople className="text-xl text-white" />
+            <span className="text-sm font-medium">Employee List</span>
           </Link>
         </div>
       </div>
