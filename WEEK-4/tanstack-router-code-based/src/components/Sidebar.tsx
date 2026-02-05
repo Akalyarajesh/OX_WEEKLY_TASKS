@@ -40,7 +40,7 @@ const Sidebar = () => {
       {/*BURGER BUTTON (MOBILE)  */}
       <button
         onClick={() => setOpen(true)}
-        className="sm:hidden fixed top-4 left-4 z-50 text-white bg-gray-900 p-2 rounded-md shadow"
+        className="sm:hidden fixed top-4 left-4 z-50 text-white bg-white p-2 rounded-md shadow"
       >
         <FiMenu size={22} />
       </button>
