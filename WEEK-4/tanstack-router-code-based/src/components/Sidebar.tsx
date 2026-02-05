@@ -40,7 +40,7 @@ const Sidebar = () => {
       {/*BURGER BUTTON (MOBILE)  */}
       <button
         onClick={() => setOpen(true)}
-        className="sm:hidden fixed top-4 left-4 z-50 text-white bg-white p-2 rounded-md shadow"
+        className="sm:hidden fixed top-4 left-4 z-50 text-white bg-gray-900 p-2 rounded-md shadow"
       >
         <FiMenu size={22} />
       </button>
@@ -57,7 +57,7 @@ const Sidebar = () => {
       <div
         className={`
         fixed top-0 left-0 h-screen w-[70vw] sm:w-[20vw]
-        bg-gray-900 p-5 z-50
+        bg-white p-5 z-50
         transform transition-transform duration-300 ease-in-out
         ${open ? "translate-x-0" : "-translate-x-full"}
         sm:translate-x-0
