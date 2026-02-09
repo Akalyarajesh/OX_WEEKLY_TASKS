@@ -1,7 +1,6 @@
 import { useState } from "react";
 // import {Employee} from"../components/types/Employees";
 
-
 export interface Employee {
   fullName: string;
   qualification: string;
