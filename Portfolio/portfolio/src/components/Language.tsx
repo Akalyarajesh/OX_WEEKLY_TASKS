@@ -12,8 +12,8 @@ import zod from "../assets/zod.jpg";
 const Languages = () => {
   return (
     <>
-      <div className="relative left-10  md:left-60 w-full md:w-2/3  md:mt-10">
-        <div className="flex flex-wrap gap-6 gap-y-10 md:gap-y-20">
+      <div className="relative left-10  md:left-60 w-full md:w-2/3  lg:left-100 md:mt-10">
+        <div className="flex flex-wrap gap-6 gap-y-10 md:gap-y-20 lg:gap-x-20">
           {/* HTML */}
           <div className="relative">
             <div className="absolute left-9 bottom-11 md:left-11 md:bottom-12 w-10 h-10 md:w-15 md:h-15 border-6 md:border-8 border-white rounded-full">

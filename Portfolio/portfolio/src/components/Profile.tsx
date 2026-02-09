@@ -5,7 +5,11 @@ import profile from "../assets/akalya.jpg";
 const Profile = () => {
   return (
     <>
-      <div className="absolute left-40 top-80 md:left-1/2 md:top-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-300/10 backdrop-blur h-120 md:h-100 w-60 md:w-2/3 rounded-tl-[5rem] rounded-br-[5rem] md:rounded-tl-[8rem] md:rounded-br-[8rem] border border-indigo-200 ">
+      <div
+        className="absolute left-40 top-80 md:left-1/2 md:top-1/2  md:-translate-x-1/2 md:-translate-y-1/2 lg:top-100
+       bg-indigo-300/10 backdrop-blur h-120 md:h-100 lg:120 w-60 md:w-2/3 rounded-tl-[5rem] rounded-br-[5rem] md:rounded-tl-[8rem] md:rounded-br-[8rem] 
+       border border-indigo-200 "
+      >
         <div className="flex flex-col md:flex-row m-8 gap-6 md:gap-10 justify-center items-center">
           <div className="w-35 h-35  md:w-60 md:h-60 border-8 md:border-12 border-white rounded-full ">
             <img
