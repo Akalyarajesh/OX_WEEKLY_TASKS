@@ -49,11 +49,12 @@ const EmployeeForm = () => {
       form.reset();
     },
   });
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <form
         onSubmit={(e) => {
-          e.preventDefault(); //without this zod validation is not showing data is not submitted
+          e.preventDefault(); //without this zod validation it is not showing data it's not submitted
           form.handleSubmit();
         }}
         className="max-w-5xl w-full bg-white p-6 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -73,6 +74,7 @@ const EmployeeForm = () => {
             />
           )}
         </form.Field>
+
         {/* name */}
         <form.Field name="name">
           {(field) => (

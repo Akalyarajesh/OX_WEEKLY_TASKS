@@ -72,6 +72,7 @@ type Employee = {
 
 const EmployeeTableTanStack = () => {
   const navigate = useNavigate();
+
   const { data: employees = [], isLoading } = useQuery({
     queryKey: ["employees"],
     queryFn: fetchEmployees,
