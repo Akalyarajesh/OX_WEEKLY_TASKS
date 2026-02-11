@@ -2,21 +2,25 @@ import { useForm } from "@tanstack/react-form";
 import { formSchema } from "../schemas/formSchema";
 import type { EmployeeForm } from "../schemas/formSchema";
 import TextField from "./form/TextField";
-// import { TextField } from "./form/TextField";
 
 const defaultValues: EmployeeForm = {
   name: "",
   email: "",
   age: "",
 };
-const Tanstack_form = () => {
+const Tanstackform = () => {
   const form = useForm({
     defaultValues,
     validators: {
-      onChange: formSchema,
+      // onChange: formSchema,
+      onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       console.log(value);
+
+      alert("Employee added successfully");
+
+      form.reset();
     },
   });
 
@@ -73,6 +77,7 @@ const Tanstack_form = () => {
                 Email
               </label>
               <input
+                id="email"
                 type="text"
                 value={state.value}
                 onChange={(e) => handleChange(e.target.value)}
@@ -100,6 +105,7 @@ const Tanstack_form = () => {
                 Age
               </label>
               <input
+                id="age"
                 type="text"
                 value={state.value}
                 onChange={(e) => handleChange(e.target.value)}
@@ -128,4 +134,4 @@ const Tanstack_form = () => {
   );
 };
 
-export default Tanstack_form;
+export default Tanstackform;

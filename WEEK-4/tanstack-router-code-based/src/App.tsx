@@ -6,7 +6,6 @@ function App() {
     <>
       <div className="flex">
         <Sidebar />
-
         <div className="w-full sm:ml-[20vw] sm:w-[80vw] min-h-screen bg-gray-200 p-6">
           <Outlet />
         </div>

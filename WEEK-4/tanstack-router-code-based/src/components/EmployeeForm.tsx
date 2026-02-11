@@ -1,11 +1,12 @@
 import { useForm } from "@tanstack/react-form";
 import { formSchema, type EmployeeFormValidation } from "../schemas/formSchema";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useParams, useNavigate } from "@tanstack/react-router";
 import TextField from "./form/TextField";
 import SelectField from "./form/SelectField";
 import TextArea from "./form/TextArea";
 import Button from "./form/Button";
-import { addEmployee } from "./employeeApi";
+import { addEmployee, updateEmployee, fetchEmployees } from "./employeeApi";
 
 const defaultValues: EmployeeFormValidation = {
   id: "",
@@ -26,7 +27,18 @@ const defaultValues: EmployeeFormValidation = {
 };
 
 const EmployeeForm = () => {
+  const { id } = useParams({ strict: false });
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+  // Get all employees
+  const { data: employees = [] } = useQuery({
+    queryKey: ["employees"],
+    queryFn: fetchEmployees,
+  });
+
+  // Find employee for edit
+  const selectedEmployee = employees.find((e) => e.id === id);
 
   const mutation = useMutation({
     mutationFn: addEmployee,
@@ -37,15 +49,30 @@ const EmployeeForm = () => {
     },
   });
 
+  // UPDATE
+  const updateMutation = useMutation({
+    mutationFn: updateEmployee,
+    onSuccess: (_, employee) => {
+      alert("Employee Updated Successfully");
+      queryClient.invalidateQueries({ queryKey: ["employees"] });
+      navigate({ to: `/profile/${employee.id}` });
+    },
+  });
+
   const form = useForm({
-    defaultValues,
+    defaultValues: selectedEmployee ?? defaultValues,
+
     validators: {
       onChange: formSchema,
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
       // add new employee it will trigger invalidateQueries in mutation
-      mutation.mutate(value);
+      if (id) {
+        updateMutation.mutate(value);
+      } else {
+        mutation.mutate(value);
+      }
       form.reset();
     },
   });
@@ -266,7 +293,7 @@ const EmployeeForm = () => {
           )}
         </form.Field>
 
-        <Button type="submit" label="Submit" />
+        <Button type="submit" label={id ? "Update Employee" : "Add Employee"} />
       </form>
     </div>
   );

@@ -1,9 +1,12 @@
-import Tanstack_form from "./components/Tanstack_form";
+import Tanstackform from "./components/Tanstackform";
+
+import RegisterForm from "./lib/RegisterForm";
 
 function App() {
   return (
     <>
-      <Tanstack_form />
+      <Tanstackform />
+      <RegisterForm />
     </>
   );
 }

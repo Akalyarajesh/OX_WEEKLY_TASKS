@@ -15,9 +15,15 @@ function TextField({
 }: TextFieldProps) {
   return (
     <div className="mb-4">
-      <label className="block text-gray-700 font-semibold mb-1">{label}</label>
+      <label
+        className="block text-gray-700 font-semibold mb-1"
+        htmlFor={field.name}
+      >
+        {label}
+      </label>
 
       <input
+        id={field.name}
         type={type}
         value={field.state.value as string}
         onChange={(e) => field.handleChange(e.target.value)}

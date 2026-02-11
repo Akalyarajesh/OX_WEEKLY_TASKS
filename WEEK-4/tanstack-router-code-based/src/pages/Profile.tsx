@@ -1,15 +1,13 @@
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
-import { useParams } from "@tanstack/react-router";
-import { fetchEmployees } from "../components/employeeApi";
+import { useParams, useNavigate } from "@tanstack/react-router";
+import { fetchEmployees, deleteEmployee } from "../components/employeeApi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-// import { TbEdit } from "react-icons/tb";
-import { deleteEmployee } from "../components/employeeApi";
-import { useNavigate } from "@tanstack/react-router";
+import { TbEdit } from "react-icons/tb";
 
 const Profile = () => {
   const { id } = useParams({ from: "/profile/$id" });
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const { data: employees = [], isLoading } = useQuery({
     queryKey: ["employees"],
@@ -39,12 +37,18 @@ const Profile = () => {
       </div>
     );
   }
+  const headerBg =
+    employee.gender?.toLowerCase() === "female"
+      ? "bg-linear-to-r from-pink-400 to-rose-300"
+      : "bg-linear-to-r from-indigo-600 to-blue-600";
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow overflow-hidden">
         {/* Top Profile Section */}
-        <div className="bg-linear-to-r from-indigo-600 to-blue-600 p-8 text-white flex flex-col sm:flex-row items-center gap-6">
+        <div
+          className={`${headerBg} p-8 text-white flex flex-col sm:flex-row items-center gap-6`}
+        >
           <div className="flex items-center gap-6">
             <div className="w-28 h-28 rounded-full bg-white text-indigo-600 flex items-center justify-center text-4xl font-bold">
               {employee.name.charAt(0)}
@@ -68,17 +72,8 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {/* <TbEdit
-              size={22}
-              className="cursor-pointer hover:text-indigo-600"
-              onClick={() =>
-                navigate({
-                  to: "/",
-                  params: { id: employee.id },
-                })
-              }
-            /> */}
-        {/* About Section */}
+
+        {/* About Section*/}
         <div className="p-8 border-b">
           <h3 className="text-lg font-semibold mb-4 text-gray-800">
             Personal Information
@@ -99,7 +94,7 @@ const Profile = () => {
               {employee.fatherName}
             </p>
             <p>
-              <span className="font-medium">Qualification:</span>
+              <span className="font-medium">Qualification:</span>{" "}
               {employee.qualification}
             </p>
             <p>
@@ -138,21 +133,35 @@ const Profile = () => {
         </div>
 
         {/* Address */}
-        <div className="p-8 bg-gray-50">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Address</h3>
-          <p className="text-gray-700">{employee.address}</p>
-          <div>
-            {" "}
+        <div className="flex justify-between">
+          <div className="p-8 bg-gray-50">
+            <h3 className="text-lg font-semibold mb-2 text-gray-800">
+              Address
+            </h3>
+            <p className="text-gray-700">{employee.address}</p>
+          </div>
+          <div className="flex flex-wrap flex-row gap-4 m-5">
             <button
               onClick={() => {
                 if (confirm("Delete this employee profile?")) {
                   deleteMutation.mutate(employee.id);
                 }
               }}
-              className="text-red-600 hover:text-red-800 transition"
+              className="text-red-600 hover:text-red-500 transition"
               title="Delete Employee"
             >
               <RiDeleteBin6Line size={22} />
+            </button>
+            <button>
+              <TbEdit
+                size={22}
+                className="cursor-pointer text-indigo-600 hover:text-indigo-500"
+                onClick={() =>
+                  navigate({
+                    to: `/edit/${employee.id}`,
+                  })
+                }
+              />
             </button>
           </div>
         </div>

@@ -8,6 +8,7 @@ import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import App from "./App";
 import EmployeeTable from "./pages/EmployeeTable";
+import EmployeeForm from "./components/EmployeeForm";
 
 // root route
 const rootRoute = createRootRoute({
@@ -39,12 +40,19 @@ const profileRoute = createRoute({
   component: Profile,
 });
 
+const editEmployeeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/edit/$id",
+  component: EmployeeForm,
+});
+
 // Route tree
 const routeTree = rootRoute.addChildren([
   homeRoute,
   employeeTableRoute,
   settingsRoute,
   profileRoute,
+  editEmployeeRoute,
 ]);
 
 export const router = createRouter({
