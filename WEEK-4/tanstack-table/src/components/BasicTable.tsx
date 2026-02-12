@@ -137,25 +137,31 @@ const BasicTable = () => {
             {/* TABLE HEAD */}
             <thead className="bg-gray-100 sticky top-0 z-10">
               {table.getHeaderGroups().map((headerGroup) => (
+
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
+
                     <th
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
                       className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-600 border-b"
                     >
+
                       {header.isPlaceholder ? null : (
+
                         <div>
                           {flexRender(
                             header.column.columnDef.header,
                             header.getContext(),
                           )}
+                          
                           {header.column.getIsSorted() === "asc" ? (
                             <IoArrowUpOutline />
                           ) : header.column.getIsSorted() === "desc" ? (
                             <IoArrowDownOutline />
                           ) : null}
                         </div>
+
                       )}
                     </th>
                   ))}

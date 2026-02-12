@@ -1,8 +1,8 @@
-import { formOptions, useForm } from "@tanstack/react-form";
+import { formOptions, useForm, useStore } from "@tanstack/react-form";
 
 interface RegisterForm {
   firstName: string;
-  lastname: string;
+  lastName: string;
   age: number | undefined;
   email: string;
   password: string;
@@ -23,7 +23,7 @@ interface RegisterForm {
 
 const defaultValues: RegisterForm = {
   firstName: "",
-  lastname: "",
+  lastName: "",
   age: undefined,
   email: "",
   password: "",
@@ -34,7 +34,23 @@ const defaultValues: RegisterForm = {
     state: "",
     zipcode: "",
   },
-  skills: [],
+  skills: [
+    {
+      name: "HTML",
+      id: crypto.randomUUID(),
+      level: "beginners",
+    },
+    {
+      name: "CSS",
+      id: crypto.randomUUID(),
+      level: "beginners",
+    },
+    {
+      name: "JavaScript",
+      id: crypto.randomUUID(),
+      level: "beginners",
+    },
+  ],
   acceptTerms: false,
 };
 
@@ -48,9 +64,19 @@ const RegisterForm = () => {
     ...formOpt,
     onSubmit: (value) => {
       console.log(value);
+      // form.reset();
+    },
+    listeners: {
+      onChange: ({ formApi, fieldApi }) => {
+        console.log(formApi, fieldApi);
+      },
     },
   });
   //   console.log(form);
+
+  //   useStore
+  const values = useStore(form.store, (state) => state.values);
+  // const isDirty = useStore(form.store, (state) => state.isDirty);
   return (
     <div className="text-start max-w-100 p-4">
       <form
@@ -59,7 +85,22 @@ const RegisterForm = () => {
           form.handleSubmit();
         }}
       >
-        <form.Field name="firstName">
+        {/* <p className="text-4xl text-pink-500  mb-5">{JSON.stringify(values,null,2)}</p> */}
+        <pre className="text-4xl text-pink-500  mb-5">
+          {JSON.stringify(values, null, 2)}
+        </pre>
+
+        {/* <p>{isDirty ? "Dirty" : "Pristine"}</p> */}
+        <form.Field
+          name="firstName"
+          listeners={{
+            onChange: ({ value }) => {
+              if (!value) {
+                form.setFieldValue("lastName", "");
+              }
+            },
+          }}
+        >
           {(field) => {
             return (
               <div>
@@ -71,6 +112,84 @@ const RegisterForm = () => {
                   onBlur={field.handleBlur}
                   className="p-2 mb-2 w-full border border-black text-black "
                 />
+              </div>
+            );
+          }}
+        </form.Field>
+        <form.Subscribe selector={(state) => state.values.firstName}>
+          {(firstName) => (
+            <>
+              {firstName && (
+                <form.Field name="lastName">
+                  {(field) => {
+                    return (
+                      <div>
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                          type="text"
+                          value={field.state.value}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          onBlur={field.handleBlur}
+                          className="p-2 mb-2 w-full border border-black text-black "
+                        />
+                      </div>
+                    );
+                  }}
+                </form.Field>
+              )}
+            </>
+          )}
+        </form.Subscribe>
+        {/* Address Street */}
+        <form.Field name="address.street">
+          {(field) => {
+            return (
+              <div>
+                <label htmlFor="street">Street</label>
+                <input
+                  type="text"
+                  value={field.state.value}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  onBlur={field.handleBlur}
+                  className="p-2 mb-2 w-full border border-black text-black "
+                />
+              </div>
+            );
+          }}
+        </form.Field>
+
+        {/* Skills */}
+
+        <form.Field name="skills" mode="array">
+          {(field) => {
+            return (
+              <div>
+                Skills
+                <div>
+                  {field.state.value.map((skill, index) => (
+                    <div key={index}>
+                      {skill.name} - {skill.level}
+                      <button
+                        className="bg-red-800 p-2 m-1 text-white"
+                        onClick={() => field.removeValue(index)}
+                      >
+                        X
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  className="bg-indigo-700 p-2 mb-2"
+                  onClick={() =>
+                    field.pushValue({
+                      name: `New Value ${field.state.value.length + 1}`,
+                      id: crypto.randomUUID(),
+                      level: "beginners",
+                    })
+                  }
+                >
+                  Add Skill
+                </button>
               </div>
             );
           }}

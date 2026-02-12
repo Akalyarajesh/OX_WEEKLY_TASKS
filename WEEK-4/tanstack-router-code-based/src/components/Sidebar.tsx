@@ -85,7 +85,7 @@ const Sidebar = () => {
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 px-6 py-3 rounded transition
              hover:bg-gray-700
-             [&.active]:bg-linear-to-r from-indigo-600 to-blue-600"
+             [&.active]:bg-gray-700"
           >
             <SiGoogleforms className="text-xl text-white font-bold" />
             <span className="text-sm font-medium">Add Employee</span>
@@ -96,7 +96,7 @@ const Sidebar = () => {
             onClick={() => setOpen(false)}
             className="flex items-center gap-3 px-6 py-3 rounded transition
              hover:bg-gray-700
-             [&.active]:bg-linear-to-r from-indigo-600 to-blue-600"
+             [&.active]:bg-gray-700"
           >
             <MdOutlinePeople className="text-xl text-white" />
             <span className="text-sm font-medium">Employee List</span>

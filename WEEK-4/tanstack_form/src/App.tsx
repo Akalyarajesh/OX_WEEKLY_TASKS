@@ -1,11 +1,11 @@
-import Tanstackform from "./components/Tanstackform";
+// import Tanstackform from "./components/Tanstackform";
 
 import RegisterForm from "./lib/RegisterForm";
 
 function App() {
   return (
     <>
-      <Tanstackform />
+      {/* <Tanstackform /> */}
       <RegisterForm />
     </>
   );

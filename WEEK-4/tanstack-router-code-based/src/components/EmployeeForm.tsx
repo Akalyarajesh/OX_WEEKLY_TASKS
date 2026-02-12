@@ -55,9 +55,29 @@ const EmployeeForm = () => {
     onSuccess: (_, employee) => {
       alert("Employee Updated Successfully");
       queryClient.invalidateQueries({ queryKey: ["employees"] });
+
       navigate({ to: `/profile/${employee.id}` });
     },
   });
+
+  // const updateMutation = useMutation({
+  //   mutationFn: updateEmployee,
+
+  //   onSuccess: (updatedEmployee) => {
+  //     alert("Employee Updated Successfully");
+
+  //     // ✅ Update cache immediately
+  //     queryClient.setQueryData(
+  //       ["employees"],
+  //       (old: EmployeeFormValidation[] = []) =>
+  //         old.map((emp) =>
+  //           emp.id === updatedEmployee.id ? updatedEmployee : emp,
+  //         ),
+  //     );
+
+  //     navigate({ to: `/profile/${updatedEmployee.id}` });
+  //   },
+  // });
 
   const form = useForm({
     defaultValues: selectedEmployee ?? defaultValues,
