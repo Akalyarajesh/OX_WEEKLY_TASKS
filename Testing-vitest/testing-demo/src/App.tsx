@@ -6,8 +6,8 @@ type User = {
 };
 
 // function App({ name = "Akalya" }: { name?: string }) {
-function App() {
-  // const [count, setCount] = useState(0);
+function App({ name = "Akalya" }: { name?: string }) {
+  const [count, setCount] = useState(0);
 
   const [data, setData] = useState<User | null>(null);
 
@@ -19,10 +19,10 @@ function App() {
 
   return (
     <>
-    <h1>TESTING DEMO</h1>
-      {/* <h1>{name}</h1> */}
-      {/* <h1>{count}</h1>
-      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button> */}
+      <h1>TESTING DEMO</h1>
+      <h2>{name}</h2>
+      <h3>{count}</h3>
+      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
       {data && <h1>{data.username}</h1>}
       <button onClick={fetchUser}>Fetch users</button>
     </>

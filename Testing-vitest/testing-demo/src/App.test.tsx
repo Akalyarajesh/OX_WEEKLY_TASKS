@@ -4,21 +4,21 @@ import { userEvent } from "@testing-library/user-event";
 import App from "./App";
 
 describe("App Component", () => {
-  test.skip("testing it should render or not", () => {
+  test("testing it should render or not", () => {
     render(<App />);
-    screen.debug(undefined, 1000000);
+    // screen.debug(undefined, 1000000);
   });
 
-  //   test.only("testing app name prop", () => {
-  //     render(<App name="learn testing in react" />);
-  //     const heading = screen.getByText("learn testing in react");
-  //     screen.debug(undefined, 10000000);
-  //     expect(heading).toBeDefined();
-  //   });
+  test("testing app name prop", () => {
+    render(<App name="learn testing in react" />);
+    const heading = screen.getByText("learn testing in react");
+    // screen.debug(undefined, 10000000);
+    expect(heading).toBeDefined();
+  });
 
   // testing interactivity
 
-  test.skip("increment th count on button click", async () => {
+  test("increment th count on button click", async () => {
     render(<App />);
     const initialCount = screen.getByRole("heading", { name: "0" });
     expect(initialCount).toBeDefined();
