@@ -37,18 +37,16 @@ const Profile = () => {
       </div>
     );
   }
-  const headerBg =
-    employee.gender?.toLowerCase() === "female"
-      ? "bg-linear-to-r from-pink-400 to-rose-300"
-      : "bg-linear-to-r from-indigo-600 to-blue-600";
+  // const headerBg =
+  //   employee.gender?.toLowerCase() === "female"
+  //     ? "bg-linear-to-r from-pink-400 to-rose-300"
+  //     : "bg-linear-to-r from-indigo-600 to-blue-600";
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow overflow-hidden">
         {/* Top Profile Section */}
-        <div
-          className={`${headerBg} p-8 text-white flex flex-col sm:flex-row items-center gap-6`}
-        >
+        <div className="bg-linear-to-r from-indigo-600 to-blue-600 p-8 text-white flex flex-col sm:flex-row items-center gap-6">
           <div className="flex items-center gap-6">
             <div className="w-28 h-28 rounded-full bg-white text-indigo-600 flex items-center justify-center text-4xl font-bold">
               {employee.name.charAt(0)}
