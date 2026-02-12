@@ -12,6 +12,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import type { SortingState } from "@tanstack/react-table";
 import { IoArrowUpOutline } from "react-icons/io5";
 import { IoArrowDownOutline } from "react-icons/io5";
+
 /**
  *   {
     "id": 1,
