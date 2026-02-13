@@ -10,7 +10,6 @@ const defaultValues: LoginFormValues = {
   email: "",
   password: "",
 };
-
 const Login = () => {
   const form = useForm({
     defaultValues,
@@ -112,12 +111,11 @@ const Login = () => {
           </div>
 
           {/* Login Button */}
-
           <button
             type="submit"
             disabled={!form.state.canSubmit}
             className="py-3 rounded-lg font-semibold text-white
-            bg-linear-to-r from-blue-500 to-purple-600
+            bg-gradient-to-r from-blue-500 to-purple-600
             hover:from-purple-600 hover:to-blue-500
             transition-all duration-300 shadow-md
             disabled:opacity-50 disabled:cursor-not-allowed"
@@ -127,9 +125,9 @@ const Login = () => {
 
           {/* Divider */}
           <div className="flex items-center gap-3">
-            <hr className="grow border-gray-300" />
+            <hr className="flex-grow border-gray-300" />
             <span className="text-sm text-gray-400">OR</span>
-            <hr className="grow border-gray-300" />
+            <hr className="flex-grow border-gray-300" />
           </div>
 
           {/* Social */}

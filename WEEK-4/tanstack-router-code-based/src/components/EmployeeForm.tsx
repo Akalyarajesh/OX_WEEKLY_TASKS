@@ -42,6 +42,7 @@ const EmployeeForm = () => {
 
   const mutation = useMutation({
     mutationFn: addEmployee,
+
     onSuccess: () => {
       alert("Employee Details Added Successfully");
       // for caching
@@ -63,7 +64,7 @@ const EmployeeForm = () => {
     defaultValues: selectedEmployee ?? defaultValues,
 
     validators: {
-      onChange: formSchema,
+      // onChange: formSchema,
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {

@@ -104,6 +104,11 @@ const EmployeeTableTanStack = () => {
     state: { sorting, globalFilter: filtering },
     onSortingChange: setSorting,
     onGlobalFilterChange: setFiltering,
+    initialState: {
+      pagination: {
+        pageSize: 5, // show 5 employees per page
+      },
+    },
   });
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
@@ -193,7 +198,7 @@ const EmployeeTableTanStack = () => {
         </button>
         <span className="text-sm text-gray-600">
           Page <strong>{table.getState().pagination.pageIndex + 1}</strong> of{" "}
-          <strong>{table.getPageCount()}</strong>
+          <strong>{Math.max(table.getPageCount(), 1)}</strong>
         </span>
         <button
           onClick={() => table.nextPage()}
