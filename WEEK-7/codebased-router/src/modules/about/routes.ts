@@ -12,3 +12,9 @@ export const aboutTeamRoute = createRoute({
   path: "team",
   component: lazyRouteComponent(() => import("./pages/team")),
 });
+
+export const aboutCompanyRoute = createRoute({
+  getParentRoute: () => aboutRoute,
+  path: "company",
+  component: lazyRouteComponent(() => import("./pages/company")),
+});

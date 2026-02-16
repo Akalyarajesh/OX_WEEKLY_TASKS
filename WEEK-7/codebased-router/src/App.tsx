@@ -8,7 +8,7 @@ import {
 function App() {
   return (
     <>
-      <div className="min-h-screen overflow-x-hidden ">
+      <div className="min-h-screen overflow-x-hidden m-5 ">
         <nav className="  bg-gray-800 text-white p-5">
           <Link to="/" className="font-bold px-5">
             Home
@@ -37,6 +37,9 @@ function App() {
             >
               <DropdownMenuItem className="cursor-pointer px-4 py-2 focus:bg-gray-700 hover:bg-gray-700 rounded-none">
                 <Link to="/about/team">Team</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer px-4 py-2 focus:bg-gray-700 hover:bg-gray-700 rounded-none">
+                <Link to="/about/company">Company</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
