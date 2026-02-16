@@ -9,7 +9,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <div className="bg-white p-2">
-      <h1 className="text-2xl font-bold">Root Route</h1>
+      <h1 className="text-2xl font-bold text-center mb-5">
+        File Based Routing
+      </h1>
       {/*  navigation bar */}
       <div className="p-2 flex gap-2 mb-4 bg-teal-500 text-white">
         <Link to="/" className="[&.active]:font-bold ">

@@ -1,9 +1,9 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/_settingsLayout/settings/profile')({
+export const Route = createFileRoute("/_settingsLayout/settings/profile")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/_settingLayout/settings/profile"!</div>
+  return <div className="text-3xl">Profile</div>;
 }

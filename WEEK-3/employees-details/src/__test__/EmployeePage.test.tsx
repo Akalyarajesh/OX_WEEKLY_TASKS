@@ -3,9 +3,10 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import EmployeePage from "../pages/EmployeePage";
 
+
 describe("EmployeePage", () => {
   test("renders form fields", () => {
-    render(<EmployeePage />);
+    render(<EmployeePage/>);
 
     expect(screen.getByLabelText(/full name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/phone number/i)).toBeInTheDocument();

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("App page", () => {
   test("Should show Home Page heading", async ({ page }) => {
-    await page.goto("http://localhost:5174");
+    await page.goto("http://localhost:5179");
     await expect(page).toHaveTitle("login-page");
     await expect(
       page.getByRole("heading", { name: "Home Page" }),
@@ -12,7 +12,7 @@ test.describe("App page", () => {
 
 test.describe("Login Page", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:5174");
+    await page.goto("http://localhost:5179");
   });
 
   test("should render login component", async ({ page }) => {

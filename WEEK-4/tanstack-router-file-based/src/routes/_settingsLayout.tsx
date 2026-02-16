@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_settingsLayout")({
 function RouteComponent() {
   return (
     <div>
-      <h1>Setting page</h1>
+      <h1 className="text-3xl">Settings Layout</h1>
       <Nav />
       <Outlet />
     </div>

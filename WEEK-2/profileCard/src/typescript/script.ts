@@ -9,7 +9,7 @@ interface Profile {
 
 async function fetchData1(): Promise<void> {
   const response: Response = await fetch(
-    "https://6969d1fc3a2b2151f8464c46.mockapi.io/profileCard",
+    "https://6970b63978fec16a63feb110.mockapi.io/fruits",
   );
 
   const data: Profile[] = await response.json();
